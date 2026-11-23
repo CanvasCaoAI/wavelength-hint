@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#0d1326">
+    <meta name="description" content="Wavelength 波长桌游出题器：1000 道中文光谱题，每轮二选一，离线也能玩。">
+    <title>Wavelength · 波长出题器</title>
+    <link rel="stylesheet" href="./assets/styles.css">
+    <script defer src="./assets/questions.js"></script>
+    <script defer src="./assets/app.js"></script>
+  </head>
+  <body>
+    <main class="shell" id="app">
+      <header>
+        <div class="brand"><span class="logo" aria-hidden="true">◒</span>
+          <div>
+            <div class="brand-title">WAVELENGTH <span style="font-weight:500;color:#acbaff">波长</span>
+            </div>
+            <div class="brand-sub">1000 道中文光谱题 · 二选一</div>
+          </div>
+        </div>
+        <div class="head-side"><span class="pill" id="bankPill">✦ 1000 道题</span>
+          <button class="icon-btn" id="helpBtn" type="button" title="玩法说明" aria-label="玩法说明">?</button>
+        </div>
+      </header>
+      <section class="pick-view" aria-label="选题页面">
+        <div class="intro">
+          <div class="eyebrow">PICK ONE · ROUND <span id="roundLabel">01</span>
+          </div>
+          <h1>两道题，<span class="accent">选一道。</span>
+          </h1>
+          <p>每轮随机给你两条光谱，题目下方会告诉你该说人物、物品还是事件。</p>
+        </div>
+        <div class="toolbar">
+          <div class="filter-wrap"><span class="filter-label">题目分类</span><select class="filter" id="categorySelect" aria-label="筛选题目分类"></select>
+          </div>
+          <span class="round-tag" id="statusLine">已经浏览 <strong>0</strong> / 1000 题</span>
+        </div>
+        <div class="cards" id="options"></div>
+        <div class="actions"><button class="btn btn-secondary" id="rerollBtn" type="button">↻ 换两道题</button>
+          <button class="btn btn-plain" id="resetBtn" type="button">重置进度</button>
+        </div>
+        <div class="notice" id="notice" aria-live="polite"></div>
+      </section>
+      <section class="choice-view" aria-label="选中题目">
+        <button class="back" id="backBtn" type="button">← 返回两道候选题</button>
+        <div class="chosen-panel">
+          <div class="chosen-meta" id="chosenMeta">本轮已选</div>
+          <div class="chosen-title">把答案想象成光谱上的一个位置</div>
+          <div class="spectrum-labels">
+            <div class="spectrum-label" id="chosenLeft"></div>
+            <div class="spectrum-label" id="chosenRight"></div>
+          </div>
+          <div class="chosen-hint" id="chosenHint" aria-live="polite">💡 请举例</div>
+          <div class="spectrum-track" aria-hidden="true"><span class="spectrum-mid"></span>
+          </div>
+          <div class="track-note">← 左端极端 · 中间位置 · 右端极端 →</div>
+        </div>
+        <div class="chosen-actions"><button class="btn btn-secondary" id="favBtn" type="button" aria-pressed="false">☆ 收藏这题</button>
+          <button class="btn btn-primary" id="nextBtn" type="button">下一轮 →</button>
+        </div>
+        <div class="notice" id="choiceNotice" aria-live="polite"></div>
+      </section>
+      <footer class="footer"><span>离线可玩 · 自动保存浏览进度 · 已内置 <span id="countFooter">1000</span> 道题</span>
+        <span>键盘：1 / 2 选题 · 空格下一轮</span>
+      </footer>
+    </main>
+    <div class="help-overlay" id="helpOverlay" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
+      <div class="help-card">
+        <h2 id="helpTitle">怎么玩？</h2>
+        <p>这是《Wavelength／波长》的中文光谱题库，适合做桌游的出题助手。</p>
+        <ul>
+          <li>每轮出现 <strong>2 道随机题</strong>，选择其中 1 道。</li>
+          <li><strong>每道题有具体提示</strong>，告诉你需要举一个人物、物品、行为、地点、事件或观点，不需要猜题目想问什么。</li>
+          <li>选择后，大字显示两端的相反概念和回答提示，供大家讨论或配合实体《波长》游戏使用。</li>
+          <li>点击「下一轮」重新抽两道题；已展示的题目尽量不重复，直到当前分类全部抽完。</li>
+          <li>可按分类筛选，也可收藏喜欢的题。浏览进度只保存在这台设备的浏览器中。</li>
+        </ul>
+        <p>手机无需联网即可使用；无需登录，没有广告或外部依赖。</p>
+        <button type="button" class="btn btn-primary" id="closeHelp">开始玩</button>
+      </div>
+    </div>
+  </body>
+</html>
